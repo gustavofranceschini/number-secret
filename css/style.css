@@ -3,7 +3,9 @@
 
 :root {
     --bg-color: #404258 ;
-    --color-font-principal: #00EAD3 ;
+    --color-font-principal: #fff;
+    --color-black: #000;
+    --color-gray: #ccc ;
     
     /* Fonts */
     --font-family-principal: 'Playfair Display', serif;
@@ -24,6 +26,37 @@ body {
     font-family: var(--font-family-principal);
 }
 
+.box-number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.button-validation {
+    height: 50px;
+    width: 300px;
+    font-size: 25px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--color-black);
+
+}
+
+.button-validation:hover {
+    background-color: var(--color-gray);
+    cursor: pointer;
+}
+
+.box-number h3 {
+    font-size: 26px;
+}
+
+.box-number span {
+    font-size: 40px;
+}
+
 h1 {
     font-size: 2.2rem;
 }
@@ -36,7 +69,7 @@ h1 {
 }
 
 
-#input-teste {
+#input-value-number {
     margin: 10px;
     height: 50px;
     width: 100px;
@@ -47,7 +80,7 @@ h1 {
 }
 
 
-input:focus-visible {
+input:focus-visible,.button-validation:active {
     outline: none;
     border: 2px solid var(--color-font-principal);
 }
