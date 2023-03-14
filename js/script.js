@@ -22,6 +22,8 @@ buttonSearch.addEventListener('click', () => {
     const resultado = parseInt(inputValue.value);
     verificarNumeroCorretoOuIncorreto(resultado);  
     inputValue.value = "";
+    verificaNumeroSeEMaiorOuMenor(resultado);
+    
 })
 
 /* Verificar se o numero digitado é igual ao número secreto, caso o número for igual : Mensagem dizendo que acertou, e aparecerá um botão dizendo se vc deseja jogar novamente
@@ -35,15 +37,7 @@ function verificarNumeroCorretoOuIncorreto(resultado) {
             <button type="button" class="button-game-again" id="button-again">Jogar novamente</button>
         </div>
         `
-    } 
-    if (verificaNumeroSeEMaiorOuMenor(resultado)) {
-        boxNumber.innerHTML += 
-        `
-        <div>
-            <h3>Número invalido! Digite um número entre ${menorValor} e ${maiorValor}</h3>            
-        </div>
-        `
-    }
+    }     
 }
 
 // Atualizar a pagina quando o usuario acertar o número
@@ -54,5 +48,12 @@ document.body.addEventListener('click', e => {
 })
 
 function verificaNumeroSeEMaiorOuMenor(resultado) {
-    return resultado > maiorValor || resultado < menorValor;
+    if (resultado > maiorValor || resultado < menorValor) {
+        boxNumber.innerHTML += 
+        `
+        <div>
+            <h3>Número invalido! Digite um número entre ${menorValor} e ${maiorValor}</h3>            
+        </div>
+        `
+    }    
 }
