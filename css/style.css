@@ -24,6 +24,7 @@ body {
     text-align: center;
     gap: 10px;
     font-family: var(--font-family-principal);
+    padding: 10px;
 }
 
 .box-number {
@@ -79,8 +80,20 @@ h1 {
     border-radius: 10px;
 }
 
+.button-game-again {
+    height: 50px;
+    width: 200px;
+    font-size: 18px;
+    margin-top: 10px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-input:focus-visible,.button-validation:active {
+
+input:focus-visible,.button-validation:active, .button-game-again:active {
     outline: none;
     border: 2px solid var(--color-font-principal);
 }
+
