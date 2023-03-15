@@ -1,35 +1,52 @@
-// Declaração dos valores
-const menorValor = 1;
-const maiorValor = 1000;
-
-const elementoMenorValor = document.getElementById('menor-valor');
-elementoMenorValor.innerHTML = menorValor;
-const elementoMaiorValor = document.getElementById('maior-valor');
-elementoMaiorValor.innerHTML = maiorValor;
-
 const buttonSearch = document.getElementById('input-validation');
 const inputValue = document.getElementById('input-value-number');
-const boxNumber = document.getElementById('box-number-secret');
+const boxError = document.getElementById('box-msg-error');
 
-// Gerando o numero aleatorio para ser encontrado
-const numberVariavel = Math.floor((1000 + 1) * Math.random());
-console.log(numberVariavel)
 
-/*
-Ao clicar no botão de validar, ele vai verificar se o número é igual o numero secreto.. A função que ira fazer isso é a "verificaNumeroCorretoOuIncorreto", caso esteja incorreto, vai apenas limpar o campo de digitação e o usuário continuará testando
-*/
 buttonSearch.addEventListener('click', () => {
     const resultado = parseInt(inputValue.value);
     verificarNumeroCorretoOuIncorreto(resultado);  
-    inputValue.value = "";
-    verificaNumeroSeEMaiorOuMenor(resultado);
-    
+    inputValue.value = "";    
 })
 
-/* Verificar se o numero digitado é igual ao número secreto, caso o número for igual : Mensagem dizendo que acertou, e aparecerá um botão dizendo se vc deseja jogar novamente
-*/
+
 function verificarNumeroCorretoOuIncorreto(resultado) {
-    if (resultado === numberVariavel) {
+    const numberTesting = resultado;
+
+    if (valorValidoOuInvalido(numberTesting)){
+        boxError.innerHTML = 
+        `
+        <h3>Este valor é invalido! Digite apenas números!</h3>
+
+        `
+        inputValue.value = "";
+        return    
+    }
+
+    if (verificaSeValorEMaiorOuMenorDoQueOsParametros(numberTesting)) {
+        boxError.innerHTML = 
+        `
+        <h3>Digite um número entre ${menorValor} e ${maiorValor}</h3>
+
+        `
+        return
+    }
+
+    if (numberTesting > numberSecret) {
+        boxError.innerHTML = 
+        `
+        <h3>O número secreto é menor</h3>
+
+        `
+    } else {
+        boxError.innerHTML = 
+        `
+        <h3>O número secreto é maior</h3>
+
+        `
+    }
+
+    if (numberTesting === numberSecret) {
         document.body.innerHTML = 
         `
         <div>
@@ -37,7 +54,17 @@ function verificarNumeroCorretoOuIncorreto(resultado) {
             <button type="button" class="button-game-again" id="button-again">Jogar novamente</button>
         </div>
         `
-    }     
+    }    
+
+}
+
+
+function valorValidoOuInvalido(numberTesting) {
+    return Number.isNaN(numberTesting);
+}
+
+function verificaSeValorEMaiorOuMenorDoQueOsParametros(numberTesting) {
+    return numberTesting < menorValor || numberTesting > maiorValor;
 }
 
 // Atualizar a pagina quando o usuario acertar o número
@@ -46,14 +73,3 @@ document.body.addEventListener('click', e => {
         window.location.reload();
     }
 })
-
-function verificaNumeroSeEMaiorOuMenor(resultado) {
-    if (resultado > maiorValor || resultado < menorValor) {
-        boxNumber.innerHTML += 
-        `
-        <div>
-            <h3>Número invalido! Digite um número entre ${menorValor} e ${maiorValor}</h3>            
-        </div>
-        `
-    }    
-}
