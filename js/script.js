@@ -1,11 +1,13 @@
 const buttonSearch = document.getElementById('input-validation');
 const inputValue = document.getElementById('input-value-number');
 const boxError = document.getElementById('box-msg-error');
+const inputNumerosTentativas = document.getElementById('number-tentativas');
 
 buttonSearch.addEventListener('click', () => {
     const resultado = parseInt(inputValue.value);
     verificarNumeroCorretoOuIncorreto(resultado);  
-    inputValue.value = "";    
+    numeroTentativas();
+    inputValue.value = "";
 })
 
 function verificarNumeroCorretoOuIncorreto(resultado) {
@@ -16,10 +18,9 @@ function verificarNumeroCorretoOuIncorreto(resultado) {
         `
         <h3>Este valor é invalido! Digite apenas números!</h3>
         `
-        inputValue.value = "";
         return    
     }
-    
+
     if (verificaSeValorEMaiorOuMenorDoQueOsParametros(numberTesting)) {
         boxError.innerHTML = 
         `
@@ -30,15 +31,15 @@ function verificarNumeroCorretoOuIncorreto(resultado) {
     }
 
     if (numberTesting > numberSecret) {
-        boxError.innerHTML = 
+        boxError.innerHTML =
         `
-        <h3>O número secreto é menor <i class="fa-sharp fa-solid fa-arrow-down"></i></h3>
+        <h3>O número secreto é menor do que <span class="s">${numberTesting}</span> <i class="fa-sharp fa-solid fa-arrow-down"></i></h3>
 
         `
     } else {
         boxError.innerHTML = 
         `
-        <h3>O número secreto é maior <i class="fa-sharp fa-solid fa-arrow-up"></i></h3>
+        <h3>O número secreto é maior do que <span class="s">${numberTesting}</span> <i class="fa-sharp fa-solid fa-arrow-up"></i></h3>
 
         `
     }
@@ -48,6 +49,7 @@ function verificarNumeroCorretoOuIncorreto(resultado) {
         `
         <div>
             <h1>Parabens, você acertou!</h1>
+            <h2 class="sucess">O número secreto era: ${numberSecret}</h2>
             <button type="button" class="button-game-again" id="button-again">Jogar novamente</button>
         </div>
         `

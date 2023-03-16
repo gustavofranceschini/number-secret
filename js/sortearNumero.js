@@ -1,8 +1,7 @@
 // Gerando o numero aleatorio para ser encontrado
 const menorValor = 1;
-const maiorValor = 1000;
+const maiorValor = 100;
 const numberSecret = Math.floor(gerarNumeroAleatorio()); 
-console.log(numberSecret)
 
 function gerarNumeroAleatorio(){
     return parseInt(Math.random() * (maiorValor + 1));

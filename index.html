@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- CSS CUSTOM -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="favicon" href="">
+    <link rel="icon" href="img/favicon.ico">
     <title>Number Secret</title>
 </head>
 <body>
@@ -22,11 +22,13 @@
         <h3>Digite um número entre <span id="menor-valor"></span> e <span id="maior-valor"></span></h3>
         <input type="text" id="input-value-number">
         <input type="submit" name="" id="input-validation" class="button-validation" value="VALIDAR">
+        <div id="box-tentativas"></div>
         <div id="box-msg-error"></div>
     </div>
 
 
     <script src="js/script.js"></script>
     <script src="js/sortearNumero.js"></script>
+    <script src="js/tentativas.js"></script>
 </body>
 </html>

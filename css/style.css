@@ -73,7 +73,7 @@ h1 {
 }
 
 
-#input-value-number {
+#input-value-number  {
     margin: 10px;
     height: 50px;
     width: 120px;
@@ -99,5 +99,23 @@ h1 {
 input:focus-visible,.button-validation:active, .button-game-again:active {
     outline: none;
     border: 2px solid var(--color-font-principal);
+}
+
+#box-tentativas {
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.msg-tentativas span, .number {
+    font-size: 35px;
+}
+
+.sucess {
+    font-size: 25px;
+    padding: 10px 0;
+    border: 1px solid var(--color-font-principal);
+    margin: 8px;
+    border-radius: 50px;
 }
 
